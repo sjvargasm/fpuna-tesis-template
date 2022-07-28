@@ -1,20 +1,25 @@
 from sys import argv
 from functions import *
 
+switcher = {
+    "": lambda: limpiar_compilar("tesis"),
+    "tesis": lambda: limpiar_compilar("tesis"),
+    "b": lambda: limpiar_compilar("tesis"),
 
-# De acuerdo al parámetro de programa ejecuta una compilación en concreto
-if len(argv) == 1:
-    limpiar_compilar("tesis")
-elif len(argv) > 1:
-    if argv[1] == "clean":
-        limpiar()
-    elif argv[1] == "paper":
-        limpiar_compilar("paper-i3e", "ieee-paper")
-    elif argv[1] == "ppt":
-        limpiar_compilar("presentacion", "presentacion", False)
-    elif argv[1] == "all":
-        limpiar_compilar("tesis")
-        limpiar_compilar("paper-i3e", "ieee-paper")
-        limpiar_compilar("presentacion", "presentacion", False)
-    else:
-        limpiar_compilar(argv[1])  # TODO: Hacer que funcione?
+    "all": lambda: all(),
+    "a": lambda: all(),
+
+    "ppt": lambda: limpiar_compilar("presentacion", "presentacion", False),
+    "d": lambda: limpiar_compilar("presentacion", "presentacion", False),
+
+    "paper": lambda: limpiar_compilar("paper-i3e", "ieee-paper"),
+    "p": lambda: limpiar_compilar("paper-i3e", "ieee-paper"),
+
+    "clean": lambda: limpiar(),
+    "c": lambda: limpiar(),
+}
+
+if len(argv) > 1:
+    switcher.get(argv[1], lambda: limpiar_compilar(argv[1]))()
+else:
+    switcher.get("")()
