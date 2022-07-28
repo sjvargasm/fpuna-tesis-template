@@ -14,3 +14,4 @@
 *.gz
 *.tks
 /tesis-blx.bib
+__pycache__/functions.cpython-310.pyc

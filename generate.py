@@ -1,37 +1,20 @@
-# from functions import find
 from sys import argv
 from functions import *
 
 
-def build_common(nombre, folder="book"):
-    clean(folder)
-    build(nombre, folder)
-    clean(folder)
-
-
-def build_presentacion():
-    folder = "presentacion"
-    clean(folder)
-    build_ppt("presentacion", "presentacion")
-    clean(folder)
-
+# De acuerdo al parámetro de programa ejecuta una compilación en concreto
 if len(argv) == 1:
-    build_common("tesis")
-    
+    cleanbuild("tesis")
 elif len(argv) > 1:
     if argv[1] == "clean":
         clean()
-
     elif argv[1] == "paper":
-        build_common("paper-i3e", "ieee-paper")
-
+        cleanbuild("paper-i3e", "ieee-paper")
     elif argv[1] == "ppt":
-        build_presentacion()
-
+        cleanbuild("presentacion", "presentacion", False)
     elif argv[1] == "all":
-        build_common("tesis", "book")
-        build_common("paper-i3e", "ieee-paper")
-        build_presentacion()
-
+        cleanbuild("tesis")
+        cleanbuild("paper-i3e", "ieee-paper")
+        cleanbuild("presentacion", "presentacion", False)
     else:
-        build_common(argv[1], argv[2]);
+        cleanbuild(argv[1])  # TODO: Hacer que funcione?
