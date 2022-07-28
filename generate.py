@@ -4,17 +4,17 @@ from functions import *
 
 # De acuerdo al parámetro de programa ejecuta una compilación en concreto
 if len(argv) == 1:
-    cleanbuild("tesis")
+    limpiar_compilar("tesis")
 elif len(argv) > 1:
     if argv[1] == "clean":
-        clean()
+        limpiar()
     elif argv[1] == "paper":
-        cleanbuild("paper-i3e", "ieee-paper")
+        limpiar_compilar("paper-i3e", "ieee-paper")
     elif argv[1] == "ppt":
-        cleanbuild("presentacion", "presentacion", False)
+        limpiar_compilar("presentacion", "presentacion", False)
     elif argv[1] == "all":
-        cleanbuild("tesis")
-        cleanbuild("paper-i3e", "ieee-paper")
-        cleanbuild("presentacion", "presentacion", False)
+        limpiar_compilar("tesis")
+        limpiar_compilar("paper-i3e", "ieee-paper")
+        limpiar_compilar("presentacion", "presentacion", False)
     else:
-        cleanbuild(argv[1])  # TODO: Hacer que funcione?
+        limpiar_compilar(argv[1])  # TODO: Hacer que funcione?
